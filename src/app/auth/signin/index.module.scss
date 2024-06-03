@@ -26,13 +26,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top:50px;
-    height: 80vh; 
+    margin-top:80px;
+    height: 50vh; /* Utilisez 100vh pour centrer verticalement */
     width: 50vh;
-    background-color: #f5f5df; 
+    background-color: #f5f5df; /* Couleur de fond différente pour la div contenant le formulaire */
     padding: 20px;
     border-radius: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 0 10px rgba(109, 48, 185, 0.1); /* Optionnel : Ajouter une ombre pour un effet visuel */
 }
 
 .form {
