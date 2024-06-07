@@ -1,0 +1,48 @@
+.header {
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        // transition: background-image 0.3s ease; // Ajout d'une transition pour un effet plus doux
+
+   
+        background-image: linear-gradient(135deg, #ad57e3 0%, #e057ad 100%); // Dégradé de couleur
+    
+        transition: all 0.3s ease-in-out;
+        &.fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99999;
+            background-color: white;
+            width: 100%;
+            // transition: all 0.3s ease-in-out;
+        }
+        .logo {
+            
+            // margin-bottom: 5px;
+            width: 80px;
+            height: 80px;
+            margin-left: 550px;
+            
+        }
+    }
+  
+
+    &__left {
+        width: 33.33%;
+    }
+
+    &__right {
+        width: 33.33%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__center {
+        width: 33.33%;
+        text-align: center;
+    }
+    
+}

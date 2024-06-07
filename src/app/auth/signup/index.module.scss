@@ -11,8 +11,8 @@
     // top: 10px;
     // left: 100px;
     margin-bottom: 20px;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 
 // .logo video {
@@ -26,10 +26,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top:50px;
+    margin-top:0px;
     height: 80vh; 
     width: 50vh;
-    background-color: #f5f5df; 
+    // background-color: #f5f5df; 
+    transition: background-image 0.3s ease;
+    background-image: linear-gradient(135deg, #ad57e3 0%, #e057ad 100%); 
     padding: 20px;
     border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 

@@ -79,7 +79,7 @@ const Page = () => {
             </div> */}
 			<div className={styles.formContainer}>
 			{/* <div className={styles.logo}> */}
-                <video  className={styles.logo} src="/logo.mp4" autoPlay loop muted width={50} height={50} />
+                <img className={styles.logo} src="/Logo.png"   />
             {/* </div> */}
             {/* <Title title="GOURMET GURU" color="primary" /> */}
             <form className={styles.form}
