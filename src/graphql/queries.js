@@ -9,6 +9,10 @@ export const GET_RECIPES = gql`
             photo_url
             cooking_time
             preparation
+            ingredients {
+        ingredient_id
+        name
+      }
         }
     }
 `;

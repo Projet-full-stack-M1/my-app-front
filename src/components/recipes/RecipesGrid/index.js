@@ -1,6 +1,6 @@
 
 
-// components/CardGrid.js
+"use client";
 
 import RecipeCard from '../RecipeCard';
 import styles from './index.module.scss';
