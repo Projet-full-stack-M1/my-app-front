@@ -1,4 +1,4 @@
-/* components/Card.module.css */
+
 
 .card {
     border: 1px solid #e0e0e0;
@@ -26,6 +26,8 @@
   .cardTitle {
     font-size: 1.5em;
     margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    color: palevioletred;
   }
   
   .cardDescription {
@@ -34,17 +36,5 @@
     color: #555;
   }
   
-  .cardButton {
-    background-image: linear-gradient(135deg, #ad57e3 0%, #e057ad 100%);
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .cardButton:hover {
-    background-color: #005bb5;
-  }
+
   

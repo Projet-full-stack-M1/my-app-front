@@ -1,0 +1,71 @@
+.recipeCard {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+    .imageContainer {
+      position: relative;
+  
+      .image {
+        width: 100%;
+        height: auto;
+      }
+  
+      .title {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 1.5rem;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+  
+      .icons {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+  
+        .heart,
+        .clock {
+          font-size: 1.5rem;
+          margin-left: 10px;
+          color: white;
+          cursor: pointer;
+  
+          &:hover {
+            color: #ff6b6b; // Couleur au survol
+          }
+        }
+  
+        .heartActive {
+          color: #ff6b6b; // Couleur lorsque le cœur est activé
+        }
+      }
+    }
+  
+    .content {
+      padding: 20px;
+  
+      .sectionTitle {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+  
+      .description {
+        margin-bottom: 20px;
+      }
+  
+    //   .allergens {
+    //     // Styles pour les icônes d'allergènes
+    //   }
+    }
+  }
+  

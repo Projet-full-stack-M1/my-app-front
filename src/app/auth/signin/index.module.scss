@@ -4,22 +4,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    // background-color: hsla(0, 40%, 89%, 0.897); /* Couleur de fond du reste de la page */
+   
 }
 .logo {
-    // position: absolute;
-    // top: 10px;
-    // left: 100px;
+    
     margin-bottom: 5px;
     width: 150px;
     height: 150px;
 }
-
-// .logo video {
-//     width: 150px;
-//     height: 150px;
-//     object-fit: cover;
-// }
 
 .formContainer {
     display: flex;
@@ -27,12 +19,11 @@
     justify-content: center;
     align-items: center;
     margin-top:80px;
-    height: 60vh; /* Utilisez 100vh pour centrer verticalement */
+    height: 60vh; 
     width: 50vh;
-    // background-color: #f5f5df; /* Couleur de fond différente pour la div contenant le formulaire */
     padding: 20px;
     border-radius: 50px;
-    box-shadow: 0 0 10px rgba(109, 48, 185, 0.1); /* Optionnel : Ajouter une ombre pour un effet visuel */
+    box-shadow: 0 0 10px rgba(109, 48, 185, 0.1); 
     transition: background-image 0.3s ease;
     background-image: linear-gradient(135deg, #ad57e3 0%, #e057ad 100%); 
 }

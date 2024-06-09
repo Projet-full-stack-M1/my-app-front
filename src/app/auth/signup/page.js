@@ -1,125 +1,93 @@
-
-
-
-// export default function SignUp() {
-//   const onSubmit = (event) => {
-//     event.preventDefault();
-//   };
-//   return (
-//     <div>
-//       <h1>Sign Up</h1>
-//       <form >
-//       <input type="text" name="Prénom" /> 
-//       <input type="text" name="Nom" />
-//       <input
-// 					label="Email"
-// 					name="Email"
-// 					type="email"
-// 					// value={form.mail}
-// 					// handleChange={handleChange}
-// 				/>
-//       <button type="submit">Submit</button>
-//     </form>
-//     </div>
-//   );
-// }
-
-
-
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; // Importez useRouter depuis next/navigation
+import { useMutation } from "@apollo/client";
+import { REGISTER_USER } from "@/graphql/mutations"; // Importez la mutation REGISTER_USER
 import Button from "@/components/UI/Button";
 import Input from "@/components/UI/Input";
-// import Title from "@/components/UI/Title";
 import styles from "./index.module.scss";
 
-const Page = () => {
+const SignupPage = () => {
+    const router = useRouter(); // Initialisez useRouter
+    const [register, { loading, error }] = useMutation(REGISTER_USER); // Utilisez useMutation pour exécuter la mutation REGISTER_USER
 
-	const router = useRouter();
-
-	const [form, setForm] = useState({
-		Nom: "",
-		Prenom: "",
-		Email: "",
-		password: "",
+    const [form, setForm] = useState({
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
     });
-    
-	const handleChange = (e) => {
-		setForm({ ...form, [e.target.name]: e.target.value });
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
     };
-    
-  //   const submitForm = async () => {
-	// 	try {
-	// 		const res = await fetch('/api/auth/register', {
-	// 			method: 'POST',
-	// 			body: JSON.stringify(form),
-	// 			headers: {
-	// 				'Content-Type': 'application/json',
-	// 			},
-	// 		});
-	// 		const data = await res.json();
-	// 		console.log(data);
-	// 		if (data?.success) {
-	// 			router.push('/account/profil');					
-	// 		} 
-	// 	}
-	// 	catch (err) {
-	// 		console.log(err);
-	// 	}
-		
-	// }
-	
-	return (
+
+    const submitForm = async (e) => {
+        e.preventDefault();
+        try {
+            const { data } = await register({
+                variables: {
+                    first_name: form.first_name,
+                    last_name: form.last_name,
+                    email: form.email,
+                    password: form.password,
+                },
+            });
+
+            // Log pour vérifier l'inscription
+            console.log("Inscription réussie : ", data);
+
+            // Redirigez l'utilisateur après une inscription réussie
+            if (data && data.register && data.register.user_id) {
+                router.push("/auth/signin"); // Redirection vers la page de connexion
+            } else {
+                console.error("Échec de l'inscription :", data);
+            }
+        } catch (error) {
+            console.error("Erreur lors de l'inscription de l'utilisateur :", error);
+        }
+    };
+
+    return (
         <div className={styles.wrapper}>
-		{/* <div className={styles.logo}>
-                <video src="/logo.mp4" autoPlay loop muted width={50} height={50} />
-            </div> */}
-			<div className={styles.formContainer}>
-			{/* <div className={styles.logo}> */}
-                <img  className={styles.logo} src="/Logo.png" />
-            {/* </div> */}
-            {/* <Title title="GOURMET GURU" color="primary" /> */}
-            <form className={styles.form}
-                onSubmit={(e) => {
-                    e.preventDefault();
-					submitForm();
-				}}
-			>
-				<Input
-					label="Nom"
-					name="nom"
-					type="nom"
-					value={form.Nom}
-					handleChange={handleChange}
-				/>
-				<Input
-					label="Prenom"
-					type="prenom"
-					value={form.prenom}
-					name="prenom"
-					handleChange={handleChange}
-				/>
-				<Input
-					label="Email"
-					name="Email"
-					type="email"
-					value={form.email}
-					handleChange={handleChange}
-				/>
-				<Input
-					label="Password"
-					type="password"
-					name="password"
-					value={form.password}
-					handleChange={handleChange}
-				/>
-				<Button type="submit" text="Register" />
-			</form>
-			</div>
-		</div>
-	);
+            <div className={styles.formContainer}>
+                <img className={styles.logo} src="/Logo.png" />
+                <form className={styles.form} onSubmit={submitForm}>
+                    <Input
+                        label="First Name"
+                        name="first_name"
+                        type="text"
+                        value={form.first_name}
+                        handleChange={handleChange}
+                    />
+                    <Input
+                        label="Last Name"
+                        name="last_name"
+                        type="text"
+                        value={form.last_name}
+                        handleChange={handleChange}
+                    />
+                    <Input
+                        label="Email"
+                        name="email"
+                        type="email"
+                        value={form.email}
+                        handleChange={handleChange}
+                    />
+                    <Input
+                        label="Password"
+                        type="password"
+                        name="password"
+                        value={form.password}
+                        handleChange={handleChange}
+                    />
+                    <Button type="submit" text="S'inscrire" color="primary" />
+                    {loading && <p>Loading...</p>}
+                    {error && <p>Error: {error.message}</p>}
+                </form>
+            </div>
+        </div>
+    );
 };
 
-export default Page;
-
+export default SignupPage;

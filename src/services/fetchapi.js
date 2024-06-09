@@ -1,7 +1,7 @@
 
 export const fetchApi = async (query, variables = {}, token) => { 
     try {
-        console.log("Fetching GraphQL with the following details:");
+        console.log("Details of fetching:");
         console.log("URL:", `${process.env.NEXT_PUBLIC_BACKEND_API}/graphql`);
         console.log("Query:", query);
         console.log("Variables:", variables);
