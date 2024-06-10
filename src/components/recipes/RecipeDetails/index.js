@@ -23,7 +23,7 @@ const RecipeDetail = ({ recipe }) => {
         <h3 className={styles.sectionTitle}>Préparation</h3>
         <p className={styles.description}>{recipe.preparation}</p>
         <div className={styles.allergens}>
-          {/* Afficher les icônes des allergènes ici */}
+          
         </div>
       </div>
     </div>

@@ -33,3 +33,20 @@ export const GET_RECIPE = gql`
         }
     }
 `;
+
+export const GET_RECIPES_BY_COUNTRY = gql`
+  query GetRecipesByCountry($country: String!) {
+    getRecipesByCountry(country: $country) {
+      recipe_id
+      name
+      country
+      photo_url
+      cooking_time
+      preparation
+      ingredients {
+        ingredient_id
+        name
+      }
+    }
+  }
+`;

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { fetchApi } from '@/services/fetchapi';
 import RecipesGrid from '@/components/recipes/RecipesGrid';
 import { GET_RECIPES } from '../../graphql/queries';
+import styles from './index.module.scss';
 
 const BlogPage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -38,11 +39,12 @@ const BlogPage = () => {
   
   return (
     <div >
-      <h1>Recipes</h1>
+      <div className={styles.wrapper}><h1 className={styles.title}>Recettes</h1> </div>
       <RecipesGrid cards={formattedRecipes} />
     </div>
   );
 };
 
 export default BlogPage;
+
 

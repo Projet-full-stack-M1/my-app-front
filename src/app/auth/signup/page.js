@@ -1,15 +1,16 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // Importez useRouter depuis next/navigation
+import { useRouter } from "next/navigation"; 
 import { useMutation } from "@apollo/client";
-import { REGISTER_USER } from "@/graphql/mutations"; // Importez la mutation REGISTER_USER
+import { REGISTER_USER } from "@/graphql/mutations"; 
 import Button from "@/components/UI/Button";
 import Input from "@/components/UI/Input";
 import styles from "./index.module.scss";
+import Link from "next/link";
 
 const SignupPage = () => {
-    const router = useRouter(); // Initialisez useRouter
-    const [register, { loading, error }] = useMutation(REGISTER_USER); // Utilisez useMutation pour exécuter la mutation REGISTER_USER
+    const router = useRouter(); 
+    const [register, { loading, error }] = useMutation(REGISTER_USER); 
 
     const [form, setForm] = useState({
         first_name: "",
@@ -34,12 +35,12 @@ const SignupPage = () => {
                 },
             });
 
-            // Log pour vérifier l'inscription
+            
             console.log("Inscription réussie : ", data);
 
-            // Redirigez l'utilisateur après une inscription réussie
+           
             if (data && data.register && data.register.user_id) {
-                router.push("/auth/signin"); // Redirection vers la page de connexion
+                router.push("/auth/signin"); 
             } else {
                 console.error("Échec de l'inscription :", data);
             }
@@ -54,14 +55,14 @@ const SignupPage = () => {
                 <img className={styles.logo} src="/Logo.png" />
                 <form className={styles.form} onSubmit={submitForm}>
                     <Input
-                        label="First Name"
+                        label="Prénom"
                         name="first_name"
                         type="text"
                         value={form.first_name}
                         handleChange={handleChange}
                     />
                     <Input
-                        label="Last Name"
+                        label="Nom"
                         name="last_name"
                         type="text"
                         value={form.last_name}
@@ -75,7 +76,7 @@ const SignupPage = () => {
                         handleChange={handleChange}
                     />
                     <Input
-                        label="Password"
+                        label="Mot de passe"
                         type="password"
                         name="password"
                         value={form.password}
@@ -85,8 +86,12 @@ const SignupPage = () => {
                     {loading && <p>Loading...</p>}
                     {error && <p>Error: {error.message}</p>}
                 </form>
+                <Link href={'/auth/signin'}>
+                 <p>Se connecter</p>
+                </Link>
             </div>
         </div>
+        
     );
 };
 

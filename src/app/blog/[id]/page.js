@@ -15,6 +15,7 @@ const DetailsPage = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
+        console.log(`Fetching recipe with ID: ${id}`);
         const data = await fetchApi(GET_RECIPE, { recipe_id :id});
         setRecipe(data.getRecipe);
       } catch (error) {
@@ -34,17 +35,13 @@ const DetailsPage = () => {
 
   if (!recipe) return null;
 
-  // const formattedRecipe = {
-  //   image: `${process.env.NEXT_PUBLIC_BACKEND_API}/${recipe.photo_url}`,
-  //   title: recipe.name,
-  //   description: recipe.preparation,
-  // };
+ 
   
   return (
     <div >
       <h1>Recipe Details</h1>
-      {/* <RecipeDetails recipe={formattedRecipe} /> */}
-      <RecipeDetails/>
+      
+      <RecipeDetails recipe={recipe}/>
     </div>
   );
 };

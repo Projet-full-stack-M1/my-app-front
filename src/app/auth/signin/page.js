@@ -6,6 +6,7 @@ import { LOGIN } from "@/graphql/mutations";
 import Button from "@/components/UI/Button";
 import Input from "@/components/UI/Input";
 import styles from "./index.module.scss";
+import Link from "next/link";
 
 const Page = () => {
     const router = useRouter(); 
@@ -55,7 +56,7 @@ const Page = () => {
                         handleChange={handleChange}
                     />
                     <Input
-                        label="Password"
+                        label="Mot de passe"
                         type="password"
                         name="password"
                         value={form.password}
@@ -65,6 +66,9 @@ const Page = () => {
                     {loading && <p>Loading...</p>}
                     {error && <p>Error: {error.message}</p>}
                 </form>
+                <Link href={'/auth/signup'}>
+                 <p>Créer un compte</p>
+                </Link>
             </div>
         </div>
     );
